@@ -1,0 +1,55 @@
+<app-menu></app-menu>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Listado de Resultados de Encuesta</h5>
+
+        <div class="table-responsive">
+          <table class="table table-sm aling-item-start">
+            <thead class="table-striped table-bordered" style="font-size: 12px;">
+              <tr class="table-dark">
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Calificacion</th>
+                <th scope="col">obs</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Horario</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let satisfaccion of satisfaccionList" style="font-size: 12px;">
+                <td>{{satisfaccion.nombre}}</td>
+                <td>{{satisfaccion.email}}</td>
+                <td>{{satisfaccion.calificacion}}</td>
+                <td>{{satisfaccion.obs}}</td>
+                <td>{{satisfaccion.telefono}}</td>
+                <td>{{satisfaccion.horario}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>   
+
+      </div>      
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Grafica de Resultados</h5>
+        <ngx-charts-advanced-pie-chart class="chart-container chart-sm"
+          [view]="view"
+          [scheme]="colorScheme"
+          [results]="countsList"         
+          [animations]="animations"
+          [gradient]="gradient"
+          [tooltipDisabled]="tooltipDisabled"
+          [label]="labelTotal"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)">
+        </ngx-charts-advanced-pie-chart>
+      </div>
+    </div>
+  </div>
+</div>
